@@ -25,7 +25,7 @@ from preprocess import preprocess_texts
 # =====================================================
 # PAGE CONFIG
 # =====================================================
-st.set_page_config(page_title="LexaClass: Text Classification Toolkit")
+st.set_page_config(page_title="LexaClass: Text Classification Emotion Public Toolkit")
 st.title("LexaClass – Text Classification Toolkit")
 st.caption("Lexicon-based labeling + Training (NB / LR / SVM)")
 
