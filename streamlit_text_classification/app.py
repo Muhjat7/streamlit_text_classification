@@ -25,9 +25,13 @@ from preprocess import preprocess_texts
 # =====================================================
 # PAGE CONFIG
 # =====================================================
-st.set_page_config(page_title="LexaClass: Text Classification Emotion Public Toolkit")
-st.title("LexaClass – Text Classification Toolkit")
-st.caption("Lexicon-based labeling + Training (NB / LR / SVM)")
+st.set_page_config(
+    page_title="LexaClass — Gas Klasifikasi Teks"
+)
+
+st.title("🔥 LexaClass")
+st.caption("Ngasih label emosi & latih model teks dalam sekali jalan 🚀")
+
 
 # =====================================================
 # SESSION HELPERS
@@ -87,6 +91,21 @@ LEXICON_EMOSI = [
     "duka cita","ikut sedih","menderita","derita","perih","luka batin"
 ]
 
+LEXICON_TAKUT = {
+    "takut", "ketakutan", "menakutkan", "ngeri", "seram", "horor",
+    "cemas", "khawatir", "waswas", "gelisah", "panik", "deg-degan",
+    "ancam", "ancaman", "terancam", "bahaya", "berbahaya",
+    "ngancem", "mengancam",
+    "parno", "paranoid",
+    "stress", "stres", "tertekan",
+    "bingung", "resah",
+    "merinding", "trauma",
+    "tidak aman", "ga aman", "gak aman",
+    "ngeri banget", "takut banget",
+    "mati", "dibunuh", "dibantai"
+}
+
+
 # =====================================================
 # RULE-BASED LABELING (FIXED)
 # =====================================================
@@ -95,19 +114,22 @@ def rule_label(text: str) -> int:
 
     score_senang = sum(w in t for w in LEXICON_SENANG)
     score_emosi  = sum(w in t for w in LEXICON_EMOSI)
+    score_takut  = sum(w in t for w in LEXICON_TAKUT)
 
-    # PRIORITAS EMOSI KUAT
-    if score_emosi > 0 and score_emosi >= score_senang:
+    # PRIORITAS: EMOSI KUAT > TAKUT > SENANG
+    if score_emosi > 0 and score_emosi >= score_takut and score_emosi >= score_senang:
         return 1   # emosi
+    elif score_takut > 0 and score_takut >= score_senang:
+        return 2   # takut
     elif score_senang > 0:
         return 0   # senang
     else:
-        return 2   # netral (fallback)
+        return 2   # fallback = takut (tidak ada netral)
 
 # =====================================================
 # 1) UPLOAD CSV
 # =====================================================
-st.header("1) Upload CSV")
+st.header("1️⃣ Upload CSV  Lo!!! — Gas Masukin Data 🚀")
 
 uploaded = st.file_uploader(
     "Upload CSV (wajib ada kolom `text`)",
@@ -143,17 +165,20 @@ st.markdown("---")
 # =====================================================
 # 2) AUTO-LABEL (LEXICON)
 # =====================================================
-st.header("2) Auto-label (Lexicon-based)")
+st.header("2️⃣ Auto-Labeling (Berbasis Kamus Kata)")
 
-if st.button("🚀 Jalankan Auto-label"):
+st.caption("Klik tombol di bawah buat ngasih label otomatis ke data teks lo 👇")
+
+if st.button("🔥 Gas Auto-Label"):
     df_local = df.copy()
     df_local["polarity"] = df_local["text"].astype(str).apply(rule_label)
     save_df(df_local)
 
-    st.success("Auto-label selesai.")
+    st.success("✅ Auto-label kelar! Data siap dipakai.")
     st.dataframe(df_local[["text", "polarity"]].head(10))
 
 df = get_df()
+
 
 # =====================================================
 # DISTRIBUSI LABEL
@@ -161,12 +186,17 @@ df = get_df()
 # =====================================================
 # DISTRIBUSI LABEL (TAMPIL SETELAH AUTO-LABEL)
 # =====================================================
-st.subheader("Distribusi Polarity")
+st.subheader("📊 Sebaran Emosi Teks")
 
 if "polarity" not in df.columns:
-    st.info("Distribusi polarity akan ditampilkan setelah proses auto-label.")
+    st.info("Belum ada label. Jalankan auto-label dulu biar datanya kebaca 👆")
 else:
-    label_map = {0: "senang", 1: "emosi", 2: "netral"}
+    label_map = {
+        0: "senang 😄",
+        1: "emosi 😡",
+        2: "takut 😨"
+    }
+
     counts = df["polarity"].map(label_map).value_counts()
 
     fig, ax = plt.subplots(figsize=(5, 4))
@@ -179,14 +209,13 @@ else:
     ax.axis("equal")
     st.pyplot(fig)
 
-    st.write("Jumlah data per kelas:")
-    st.dataframe(counts.rename("jumlah"))
-
+    st.markdown("### 📌 Ringkasan Jumlah Data")
+    st.dataframe(counts.rename("jumlah data"))
 
 # =====================================================
 # 3) TRAIN MODEL
 # =====================================================
-st.header("3) Pilih Model & Train")
+st.header("3️⃣ Gas Training Model 🚀")
 
 model_choice = st.radio(
     "Pilih model:",
@@ -262,7 +291,7 @@ st.markdown("---")
 # =====================================================
 # 4) HASIL TRAINING
 # =====================================================
-st.header("4) Hasil Training")
+st.header("4️⃣ Hasil Training — Gas Lihat Skornya 🚀")
 
 if "train_results" in st.session_state:
     res = st.session_state["train_results"]
