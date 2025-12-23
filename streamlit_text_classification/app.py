@@ -52,7 +52,7 @@ def get_uploaded_name():
 # LEXICON (NETRAL TIDAK ADA)
 # =====================================================
 LEXICON_SENANG = [
-    "senang","bahagia","gembira","suka","puas","bangga","salut",
+    "senang","bahagia","gembira","suka","puas","bangga","salut","halo bang","halo","hallo","makasih","thank you",
     "keren","mantap","bagus","baik","hebat","luar biasa",
     "top","recommended","makasih","terima kasih","jos",
     "mantul","setuju","valid","worth it","inspiratif", "senang","bahagia","gembira","suka","puas","bangga","salut","keren","mantap",
