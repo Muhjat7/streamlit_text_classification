@@ -1,126 +1,135 @@
-# 📊 Digital Marketing Analytics Dashboard
 
-Dashboard ini digunakan untuk menganalisis kinerja kampanye *digital marketing* berdasarkan metrik utama seperti *Click Through Rate (CTR)*, *Cost Per Click (CPC)*, *Conversion Rate*, dan *Return on Investment (ROI)*. Aplikasi dibangun menggunakan *Python* dan *Streamlit* serta mendukung unggah dataset CSV.
-
----
-
-## 1. Deskripsi Proyek
-
-Proyek ini bertujuan untuk:
-- Mengolah data kampanye digital marketing secara otomatis
-- Menghitung metrik kinerja utama (CTR, CPC, CR, ROI)
-- Menyajikan hasil analisis dalam bentuk tabel dan visualisasi grafik
-- Membantu evaluasi dan pengambilan keputusan berbasis data
-
-Dashboard bersifat *reusable* dan dapat digunakan dengan dataset lain selama struktur kolom sesuai.
-
----
-
-## 2. Teknologi yang Digunakan
-
-- *Python* 3.9+
-- *Streamlit*
-- *Pandas*
-
----
-
-## 3. Struktur Folder Proyek
-
-```
-Digital_Marketing_Dashboard/
-│
-├── app.py
-├── requirements.txt
-├── digital_marketing_ads_2000.csv
-├── README.md
-```
-
----
-
-## 4. Instalasi dan Persiapan Lingkungan
-
-### 4.1 Clone Repository
-```
-git clone https://github.com/username/Digital_Marketing_Dashboard.git
-cd Digital_Marketing_Dashboard
-```
-
-### 4.2 (Opsional) Virtual Environment
-```
-python -m venv venv
-source venv/bin/activate
-```
-
-### 4.3 Install Dependency
-```
-pip install -r requirements.txt
-```
-
----
-
-## 5. Menjalankan Aplikasi
-
-```
-streamlit run app.py
-```
-
-Akses di browser:
-```
-http://localhost:8501
-```
-
----
-
-## 6. Format Dataset CSV
-
-Kolom wajib:
-- date
-- campaign_name
-- impressions
-- clicks
-- cost
-- conversions
-- revenue
-
----
-
-## 7. Cara Upload Dataset
-
-1. Jalankan aplikasi
-2. Klik Browse files
-3. Pilih file CSV
-4. Dashboard akan menampilkan hasil otomatis
-
----
-
-## 8. Hasil Program dan Visualisasi
-
-### 8.1 KPI Agregat
-<img width="1266" height="150" alt="image" src="https://github.com/user-attachments/assets/2e56cc1f-a58b-458a-a800-ecd23e853ce1" />
+LexaClass
+Text Classification Tool
 
 
-### 8.2 Tabel Performa Campaign
-<img width="1266" height="255" alt="image" src="https://github.com/user-attachments/assets/1461b4bf-0254-4622-9998-704389dc0daa" />
+Panduan Penggunaan Aplikasi
+Senang· emosi · takut
 
 
-### 8.3 Visualisasi CTR
-<img width="630" height="387" alt="image" src="https://github.com/user-attachments/assets/92aae825-a1ef-4ba6-993f-5dce02988756" />
 
 
-### 8.4 Visualisasi ROI
-<img width="674" height="364" alt="image" src="https://github.com/user-attachments/assets/3c78c377-79db-429b-9bc1-c234c3f2bb2b" />
+
+User Guide & Tutorial
+Untuk Pengguna Pemula
+
+Versi 1.0
+© LexaClass
+📘 LexaClass
+Text Classification Tool
+Panduan Penggunaan & Pemahaman Hasil
+senang · emosi · takut
+
+1. Tentang LexaClass
+LexaClass adalah aplikasi berbasis web untuk membantu pengguna mengelompokkan teks ke dalam tiga kategori sentimen: senang, emosi, dan takut
+Aplikasi ini dirancang untuk pengguna pemula yang ingin:
+Memahami kecenderungan sentimen dari banyak teks
+Melakukan analisis awal secara cepat
+Mendapat gambaran umum tanpa proses teknis yang rumit
+LexaClass tidak bertujuan menggantikan analisis manual sepenuhnya, tetapi membantu mempercepat proses pemahaman data teks.
+
+2. Gambaran Umum Cara Kerja
+Secara umum, LexaClass bekerja melalui tahapan berikut:
+Pengguna mengunggah dataset teks
+Sistem memberikan label awal secara otomatis
+Distribusi label ditampilkan dalam bentuk visual
+Model klasifikasi dijalankan
+Hasil analisis ditampilkan untuk dipahami
+Setiap tahap saling berkaitan dan membantu pengguna melihat kondisi data secara bertahap.
+
+3. Upload Dataset
+Dataset yang digunakan berbentuk file CSV dan minimal memiliki satu kolom berisi teks.
+Pada tahap ini, pengguna hanya perlu memastikan bahwa:
+Teks dapat dibaca dengan jelas
+Tidak ada baris kosong berlebihan
+Format file sesuai
+Setelah dataset berhasil diunggah, sistem akan menampilkan informasi umum mengenai data yang digunakan.
 
 
----
 
-## 9. Dokumentasi Tambahan
+4. Auto-Label sebagai Label Awal
+LexaClass menyediakan fitur auto-label untuk memberikan label awal pada teks.
+Fitur ini berguna untuk:
+Mempercepat proses awal analisis
+Memberikan gambaran awal sentimen data
+Membantu pengguna yang belum memiliki label
+Auto-label bukan hasil akhir, melainkan titik awal untuk memahami data.
 
-- Link dashboard Streamlit : https://dashboarddigmar.streamlit.app/
-- Source code GitHub : https://github.com/Muhjat7/streamlit_text_classification
+
+5. Melihat Hasil Labeling
+Setelah auto-label dijalankan, LexaClass menampilkan tabel berisi:
+Teks
+Label hasil klasifikasi awal
+Pengguna dapat melihat secara umum apakah:
+Banyak teks bersifat informatif (takut)
+Terdapat ekspresi emosi senang
+Terdapat keluhan atau sentimen emosi
+Tahap ini membantu pengguna memahami karakter data sebelum analisis lebih lanjut.
 
 
----
 
-## 10. Catatan Akhir
+6. Distribusi Label
+LexaClass menampilkan distribusi label dalam bentuk grafik.
+Grafik ini memberikan gambaran umum mengenai:
+Label yang paling sering muncul
+Keseimbangan antar kategori
+Kecenderungan sentimen secara keseluruhan
+Jika satu label terlihat sangat dominan, hal ini menunjukkan bahwa:
+Data memiliki kecenderungan tertentu
+Model kemungkinan akan lebih sering memprediksi label tersebut
+Distribusi label membantu pengguna membaca konteks data, bukan menilai benar atau salah.
 
-Dashboard ini dapat dikembangkan dengan fitur filter, segmentasi campaign, dan integrasi data real-time.
+
+
+7. Proses Training Model
+Pada tahap ini, pengguna dapat menjalankan proses klasifikasi menggunakan model yang tersedia.
+Pengguna cukup:
+Memilih model yang ingin digunakan
+Menjalankan proses training
+Sistem akan memproses data dan menghasilkan model klasifikasi berdasarkan pola teks yang ada.
+Pengguna tidak perlu melakukan pengaturan teknis lanjutan.
+
+
+
+
+8. Hasil Analisis Model
+Setelah proses training selesai, LexaClass menampilkan hasil analisis dalam bentuk ringkasan visual dan tabel.
+Hasil ini menunjukkan:
+Pola prediksi model
+Hubungan antara teks dan label
+Area di mana model bekerja dengan baik
+Area di mana model masih sering keliru
+Tujuan utama tahap ini adalah memahami perilaku model, bukan mencari nilai tertinggi.
+
+
+9. Memahami Pola Kesalahan
+LexaClass juga menampilkan visual yang membantu pengguna melihat:
+Label yang sering tertukar
+Teks yang sulit diklasifikasikan
+Kecenderungan model memilih label tertentu
+Pola kesalahan ini wajar dan memberikan informasi penting tentang:
+Karakter data
+Batas kemampuan model
+Potensi perbaikan dataset
+
+
+10. Cara Menggunakan Hasil Secara Bijak
+Hasil dari LexaClass sebaiknya digunakan untuk:
+Gambaran umum sentimen
+Analisis awal
+Pendukung pengambilan keputusan
+Hasil tidak disarankan untuk:
+Penilaian individu secara mutlak
+Keputusan kritis tanpa analisis tambahan
+LexaClass membantu melihat pola besar, bukan detail per teks secara absolut.
+
+11. Penutup
+LexaClass dirancang sebagai alat bantu analisis teks yang:
+Mudah digunakan
+Transparan dalam proses
+Dengan pendekatan bertahap, LexaClass membantu pengguna memahami data teks secara lebih terstruktur dan bertanggung jawab.
+Link akses : https://lexaclass.streamlit.app/
+Unduh dataset: https://github.com/Muhjat7/streamlit_text_classification/blob/main/tes%20data.csv
+
+
+
